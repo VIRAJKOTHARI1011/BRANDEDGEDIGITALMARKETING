@@ -1326,20 +1326,28 @@ Team Style
 @media (max-width: 576px) { /* Small screens */
   .team-card {
     width: 100%; /* Full width for mobile devices */
-    margin-bottom: 20px; /* Add spacing between cards */
+    max-width: 300px; /* Restrict maximum width for a better layout */
+    margin: 0 auto 20px; /* Center the card and add bottom spacing */
+    display: flex;
+    flex-direction: column; /* Align items properly */
+    align-items: center; /* Center content within the card */
   }
 
   .team-avatar img {
-    width: 120px; /* Slightly larger avatar for better visibility */
-    height: 120px;
+    width: 100px; /* Slightly smaller avatar for compact view */
+    height: 100px;
+    object-fit: cover; /* Ensure the image remains proportionate */
+    margin-bottom: 10px; /* Add spacing below the avatar */
   }
 
   .team-name {
-    font-size: 1rem; /* Slightly smaller for compact view */
+    font-size: 1.1rem; /* Slightly larger for better readability */
+    margin-top: 10px; /* Add spacing above the name */
   }
 
   .team-role {
     font-size: 0.9rem; /* Adjusted size for role text */
+    margin-top: 5px; /* Add a bit of spacing above the role */
   }
 }
 
