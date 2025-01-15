@@ -1256,6 +1256,7 @@ Team Style
 --------------------------------------------- 
 */
 
+
 .team-card {
   background-color: #f8f9fa;
   border: 1px solid #e0e0e0;
@@ -1264,7 +1265,9 @@ Team Style
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  width: 220px;
+  margin: 0 auto; /* Centers cards on small screens */
+  max-width: 300px; /* Set a max width for consistency */
+  width: 100%; /* Full width for small screens */
   padding: 15px 10px;
 }
 
@@ -1274,8 +1277,8 @@ Team Style
 }
 
 .team-avatar img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 100px; /* Fixed width for uniformity */
+  height: 100px; /* Fixed height to maintain aspect ratio */
   object-fit: cover;
   border-bottom: 2px solid #d6d6d6;
   border-radius: 50%;
@@ -1283,7 +1286,9 @@ Team Style
 }
 
 .hover-description {
-  display: none;
+  display: flex; /* Use flex for centering */
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -1291,16 +1296,17 @@ Team Style
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   color: #ffffff;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   font-size: 0.95rem;
   padding: 15px;
   border-radius: 12px;
+  opacity: 0; 
+  visibility: hidden; 
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .team-card:hover .hover-description {
-  display: flex;
+  opacity: 1; /* Make it visible */
+  visibility: visible; /* Ensure visibility */
 }
 
 .team-name {
@@ -1315,6 +1321,29 @@ Team Style
   color: #757575;
   margin: 0;
 }
+
+/* Responsive Design */
+@media (max-width: 576px) { /* Small screens */
+  .team-card {
+    width: 100%; /* Full width for mobile devices */
+    margin-bottom: 20px; /* Add spacing between cards */
+  }
+
+  .team-avatar img {
+    width: 120px; /* Slightly larger avatar for better visibility */
+    height: 120px;
+  }
+
+  .team-name {
+    font-size: 1rem; /* Slightly smaller for compact view */
+  }
+
+  .team-role {
+    font-size: 0.9rem; /* Adjusted size for role text */
+  }
+}
+
+
 
 /* 
 ---------------------------------------------
