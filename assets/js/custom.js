@@ -317,6 +317,66 @@
 			}
 		});
 	});
-
+	document.getElementById("form-submit").addEventListener("click", function () {
+		// Clear previous error messages
+		document.querySelectorAll(".error-message").forEach(el => {
+		  el.textContent = "";
+		  el.style.color = "red";
+		});
+  
+		let isValid = true;
+  
+		// Name validation
+		const name = document.getElementById("name").value;
+		if (!name || /[^a-zA-Z ]/.test(name)) {
+		  const nameError = document.getElementById("name-error");
+		  nameError.textContent = "Please enter a valid name without special characters.";
+		  nameError.style.color = "red";
+		  isValid = false;
+		}
+  
+		// Surname validation
+		const surname = document.getElementById("surname").value;
+		if (!surname || /[^a-zA-Z ]/.test(surname)) {
+		  const surnameError = document.getElementById("surname-error");
+		  surnameError.textContent = "Please enter a valid surname without special characters.";
+		  surnameError.style.color = "red";
+		  isValid = false;
+		}
+  
+		// Email validation
+		const email = document.getElementById("email").value;
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!email || !emailRegex.test(email)) {
+		  const emailError = document.getElementById("email-error");
+		  emailError.textContent = "Please enter a valid email address.";
+		  emailError.style.color = "red";
+		  isValid = false;
+		}
+  
+		// Service validation
+		const service = document.getElementById("service").value;
+		if (!service) {
+		  const serviceError = document.getElementById("service-error");
+		  serviceError.textContent = "Please select a service.";
+		  serviceError.style.color = "red";
+		  isValid = false;
+		}
+  
+		// Message validation
+		const message = document.getElementById("message").value;
+		if (!message || message.length < 10) {
+		  const messageError = document.getElementById("message-error");
+		  messageError.textContent = "Message must be at least 10 characters long.";
+		  messageError.style.color = "red";
+		  isValid = false;
+		}
+  
+		// If valid, submit the form
+		if (isValid) {
+		  alert("Form submitted successfully!");
+		  document.getElementById("contact-form").reset();
+		}
+	  });
 
 })(window.jQuery);
